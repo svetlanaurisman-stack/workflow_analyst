@@ -177,12 +177,11 @@
             padding: 30px;
             border-radius: 12px;
             margin-top: 40px;
-            border: 1px solid #E5E7EB; /* Та самая discreet рамка */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Очень мягкая тень */
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             position: relative;
         }
         
-        /* Элегантная цветовая полоска слева для выделения блока */
         .tools::before {
             content: '';
             position: absolute;
@@ -197,7 +196,7 @@
         
         .tools h2 { 
             margin-top: 0; 
-            color: var(--primary); /* Заголовок теперь в цвет логотипа/кнопок */
+            color: var(--primary);
             font-size: 1.5rem;
         }
         
@@ -222,18 +221,17 @@
         }
         .pdf-btn:hover { background: var(--primary-hover); }
 
-        /* ===== Логотип компании ===== */
+        /* ===== Логотип компании (веб) ===== */
         .company-logo {
             position: fixed;
             top: 25px;
             right: 25px;
-            width: 140px;          /* Можете изменить размер */
+            width: 140px;
             height: auto;
             z-index: 999;
             opacity: 0.95;
         }
 
-        /* Для мобильных */
         @media (max-width: 768px) {
             .company-logo {
                 width: 100px;
@@ -249,18 +247,27 @@
             .toggle-container, .pdf-btn { display: none !important; }
             details { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
             details[open] summary::after, summary::after { display: none; }
-            details > .content { display: block !important; } /* Force open in print */
+            details > .content { display: block !important; }
             .agile-content, .waterfall-content { display: block !important; margin-bottom: 10px;}
             .agile-content::before { content: "Для Agile: "; font-weight: bold; }
             .waterfall-content::before { content: "Для Waterfall: "; font-weight: bold; }
 
-            /* Логотип в печатной версии */
+            /* ИСПРАВЛЕНИЕ: Логотип в печати */
             .company-logo {
                 position: absolute;
-                top: 10mm;
-                right: 10mm;
-                width: 35mm;
+                top: 0;
+                left: 0;
+                width: 35mm; /* Оптимальный размер для А4 */
                 opacity: 1;
+            }
+
+            /* ИСПРАВЛЕНИЕ: Сдвигаем шапку вниз, чтобы освободить место под логотип */
+            header {
+                padding-top: 25mm; 
+            }
+
+            header h1 {
+                margin-top: 0;
             }
         }
     </style>
@@ -457,7 +464,6 @@
     </div>
 
     <script>
-        // Скрипт для переключения Agile / Waterfall
         function setMethod(method) {
             const agileElements = document.querySelectorAll('.agile-content');
             const waterfallElements = document.querySelectorAll('.waterfall-content');
@@ -477,11 +483,8 @@
             }
         }
 
-        // По умолчанию включаем Agile
         window.onload = () => {
             setMethod('agile');
-            
-            // Магия для открытия всех вкладок перед печатью PDF (встроенная функция браузера)
             window.onbeforeprint = function() {
                 document.querySelectorAll('details').forEach(detail => detail.setAttribute('open', 'true'));
             };
