@@ -172,15 +172,38 @@
         }
 
         .tools {
-            background: var(--text-main);
-            color: white;
+            background: #FFFFFF;
+            color: var(--text-main);
             padding: 30px;
             border-radius: 12px;
             margin-top: 40px;
+            border: 1px solid #E5E7EB; /* Та самая discreet рамка */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Очень мягкая тень */
+            position: relative;
         }
         
-        .tools h2 { margin-top: 0; color: #FCD34D;}
-        .tools li { margin-bottom: 10px; }
+        /* Элегантная цветовая полоска слева для выделения блока */
+        .tools::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: -1px;
+            bottom: -1px;
+            width: 6px;
+            background: var(--primary);
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+        
+        .tools h2 { 
+            margin-top: 0; 
+            color: var(--primary); /* Заголовок теперь в цвет логотипа/кнопок */
+            font-size: 1.5rem;
+        }
+        
+        .tools li { 
+            margin-bottom: 12px; 
+        }
 
         .pdf-btn {
             display: block;
