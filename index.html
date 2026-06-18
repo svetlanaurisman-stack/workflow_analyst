@@ -222,6 +222,26 @@
         }
         .pdf-btn:hover { background: var(--primary-hover); }
 
+        /* ===== Логотип компании ===== */
+        .company-logo {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 140px;          /* Можете изменить размер */
+            height: auto;
+            z-index: 999;
+            opacity: 0.95;
+        }
+
+        /* Для мобильных */
+        @media (max-width: 768px) {
+            .company-logo {
+                width: 100px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+
         /* Print Styles for Save as PDF */
         @media print {
             body { background: white; color: black; }
@@ -233,228 +253,240 @@
             .agile-content, .waterfall-content { display: block !important; margin-bottom: 10px;}
             .agile-content::before { content: "Для Agile: "; font-weight: bold; }
             .waterfall-content::before { content: "Для Waterfall: "; font-weight: bold; }
+
+            /* Логотип в печатной версии */
+            .company-logo {
+                position: absolute;
+                top: 10mm;
+                right: 10mm;
+                width: 35mm;
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Универсальный workflow системного аналитика</h1>
-        <p class="subtitle">Типичный путь работы с требованиями. Выберите вашу методологию ниже, чтобы адаптировать результаты:</p>
-        
-        <div class="toggle-container">
-            <button id="btn-agile" class="toggle-btn" onclick="setMethod('agile')">🏃 Я работаю в Agile</button>
-            <button id="btn-waterfall" class="toggle-btn" onclick="setMethod('waterfall')">🌊 Я работаю в Waterfall</button>
-        </div>
-    </header>
+    <!-- ЛОГОТИП -->
+    <img src="logo.png" alt="Логотип компании" class="company-logo">
 
-    <!-- Шаг 1 -->
-    <details open>
-        <summary>1. Сбор требований и определение объема проекта</summary>
-        <div class="content">
-            <div class="goal"><strong>🎯 Цель:</strong> Сформировать первоначальный перечень требований и гипотез, определить границы проекта, выявить ключевых стейкхолдеров.</div>
-            <div class="actions">
-                <p><strong>✔️ Действия:</strong></p>
-                <ul>
-                    <li><input type="checkbox"> Провести воркшопы с заказчиком/продукт-менеджером и стейкхолдерами.</li>
-                    <li><input type="checkbox"> Собрать требования (User Stories, Jobs To Be Done, Use Cases и т.д.).</li>
-                    <li><input type="checkbox"> Использовать техники (Event Storming, интервью, опросы).</li>
-                    <li><input type="checkbox"> Совместно с архитектором разработать концептуальную архитектуру/HLD.</li>
-                </ul>
+    <div class="container">
+        <header>
+            <h1>Универсальный workflow системного аналитика</h1>
+            <p class="subtitle">Типичный путь работы с требованиями. Выберите вашу методологию ниже, чтобы адаптировать результаты:</p>
+            
+            <div class="toggle-container">
+                <button id="btn-agile" class="toggle-btn" onclick="setMethod('agile')">🏃 Я работаю в Agile</button>
+                <button id="btn-waterfall" class="toggle-btn" onclick="setMethod('waterfall')">🌊 Я работаю в Waterfall</button>
             </div>
-            <div class="result-box">
-                <strong>⛳ Результат:</strong>
-                <div class="agile-content">Верхнеуровневый бэклог продукта.</div>
-                <div class="waterfall-content">Основа для Устава проекта (Project Charter) / Спецификация требований высокого уровня.</div>
-                <div class="neutral-content">📌 Независимо от подхода необходимо определить ключевых стейкхолдеров и стратегию.</div>
-            </div>
-        </div>
-    </details>
+        </header>
 
-    <!-- Шаг 2 -->
-    <details>
-        <summary>2. Приоритизация требований и планирование релизов/этапов</summary>
-        <div class="content">
-            <div class="goal"><strong>🎯 Цель:</strong> Определить порядок реализации требований, выделить MVP, построить план релизов или этапов проекта.</div>
-            <div class="actions">
-                <p><strong>✔️ Действия:</strong></p>
-                <ul>
-                    <li><input type="checkbox"> Применить техники приоритизации (MoSCoW, Value vs Effort, RICE/ICE и др.).</li>
-                    <li><input type="checkbox"> Согласовать состав MVP.</li>
-                    <li><input type="checkbox"> Построить дорожную карту релизов на 3-6 месяцев (Agile) / План этапов проекта (Waterfall).</li>
-                    <li><input type="checkbox"> Оценить объем аналитических работ по приоритетным задачам.</li>
-                </ul>
+        <!-- Шаг 1 -->
+        <details open>
+            <summary>1. Сбор требований и определение объема проекта</summary>
+            <div class="content">
+                <div class="goal"><strong>🎯 Цель:</strong> Сформировать первоначальный перечень требований и гипотез, определить границы проекта, выявить ключевых стейкхолдеров.</div>
+                <div class="actions">
+                    <p><strong>✔️ Действия:</strong></p>
+                    <ul>
+                        <li><input type="checkbox"> Провести воркшопы с заказчиком/продукт-менеджером и стейкхолдерами.</li>
+                        <li><input type="checkbox"> Собрать требования (User Stories, Jobs To Be Done, Use Cases и т.д.).</li>
+                        <li><input type="checkbox"> Использовать техники (Event Storming, интервью, опросы).</li>
+                        <li><input type="checkbox"> Совместно с архитектором разработать концептуальную архитектуру/HLD.</li>
+                    </ul>
+                </div>
+                <div class="result-box">
+                    <strong>⛳ Результат:</strong>
+                    <div class="agile-content">Верхнеуровневый бэклог продукта.</div>
+                    <div class="waterfall-content">Основа для Устава проекта (Project Charter) / Спецификация требований высокого уровня.</div>
+                    <div class="neutral-content">📌 Независимо от подхода необходимо определить ключевых стейкхолдеров и стратегию.</div>
+                </div>
             </div>
-            <div class="result-box">
-                <strong>⛳ Результат:</strong>
-                <div class="agile-content">Приоритизированный бэклог продукта с выделенным MVP и дорожной картой.</div>
-                <div class="waterfall-content">Утвержденный Устав проекта с этапами и высокоуровневым объемом для каждого / Приоритизированный план детализации требований по этапам.</div>
-            </div>
-        </div>
-    </details>
+        </details>
 
-    <!-- Шаг 3 -->
-    <details>
-        <summary>3. Анализ, уточнение и документирование требований</summary>
-        <div class="content">
-            <div class="goal"><strong>🎯 Цель:</strong> Подготовить требования для реализации.</div>
-            <div class="actions">
-                <p><strong>✔️ Действия:</strong></p>
-                <ul>
-                    <li><input type="checkbox"> Провести интервью, воркшопы, анкетирование.</li>
-                    <li><input type="checkbox"> Использовать методы: опросники, мозговые штурмы, анализ существующей документации.</li>
-                    <li><input type="checkbox"> Зафиксировать функциональные и нефункциональные требования.</li>
-                    <li class="agile-content" style="display: list-item; list-style-type: none; margin-left: 25px;"><em>🏃 Часто используется декомпозиция User Stories на задачи (Tasks), определяются Acceptance Criteria.</em></li>
-                    <li><input type="checkbox"> Создать прототипы интерфейсов (Figma, Balsamiq) для визуализации.</li>
-                    <li><input type="checkbox"> Построить диаграммы для визуализации процессов.</li>
-                    <li><input type="checkbox"> Устранить конфликты требований через согласование с заказчиком.</li>
-                    <li><input type="checkbox"> Верифицировать и валидировать требования.</li>
-                </ul>
+        <!-- Шаг 2 -->
+        <details>
+            <summary>2. Приоритизация требований и планирование релизов/этапов</summary>
+            <div class="content">
+                <div class="goal"><strong>🎯 Цель:</strong> Определить порядок реализации требований, выделить MVP, построить план релизов или этапов проекта.</div>
+                <div class="actions">
+                    <p><strong>✔️ Действия:</strong></p>
+                    <ul>
+                        <li><input type="checkbox"> Применить техники приоритизации (MoSCoW, Value vs Effort, RICE/ICE и др.).</li>
+                        <li><input type="checkbox"> Согласовать состав MVP.</li>
+                        <li><input type="checkbox"> Построить дорожную карту релизов на 3-6 месяцев (Agile) / План этапов проекта (Waterfall).</li>
+                        <li><input type="checkbox"> Оценить объем аналитических работ по приоритетным задачам.</li>
+                    </ul>
+                </div>
+                <div class="result-box">
+                    <strong>⛳ Результат:</strong>
+                    <div class="agile-content">Приоритизированный бэклог продукта с выделенным MVP и дорожной картой.</div>
+                    <div class="waterfall-content">Утвержденный Устав проекта с этапами и высокоуровневым объемом для каждого / Приоритизированный план детализации требований по этапам.</div>
+                </div>
             </div>
-            <div class="result-box">
-                <strong>⛳ Результат:</strong>
-                <div class="agile-content">Готовые к работе задачи в бэклоге спринта.</div>
-                <div class="waterfall-content">Готовые к работе утвержденные спецификации требований.<br><br><em>📌 Потребуется явно организовать подписание документации, чтобы формально зафиксировать минимальность дальнейших изменений. Требования могут быть представлены в виде User Story, но объединены в общую спецификацию.</em></div>
-            </div>
-        </div>
-    </details>
+        </details>
 
-    <!-- Шаг 4 -->
-    <details>
-        <summary>4. Управление изменениями требований</summary>
-        <div class="content">
-            <div class="goal"><strong>🎯 Цель:</strong> Минимизировать риски несвоевременных изменений.</div>
-            <div class="actions">
-                <p><strong>✔️ Действия:</strong></p>
-                <ul>
-                    <li><input type="checkbox"> Настроить процесс запроса изменений (Change Request).</li>
-                    <li><input type="checkbox"> Оценивать влияние изменений на сроки, бюджет и архитектуру.</li>
-                    <li><input type="checkbox"> Обновлять документацию и уведомлять команду.</li>
-                </ul>
+        <!-- Шаг 3 -->
+        <details>
+            <summary>3. Анализ, уточнение и документирование требований</summary>
+            <div class="content">
+                <div class="goal"><strong>🎯 Цель:</strong> Подготовить требования для реализации.</div>
+                <div class="actions">
+                    <p><strong>✔️ Действия:</strong></p>
+                    <ul>
+                        <li><input type="checkbox"> Провести интервью, воркшопы, анкетирование.</li>
+                        <li><input type="checkbox"> Использовать методы: опросники, мозговые штурмы, анализ существующей документации.</li>
+                        <li><input type="checkbox"> Зафиксировать функциональные и нефункциональные требования.</li>
+                        <li class="agile-content" style="display: list-item; list-style-type: none; margin-left: 25px;"><em>🏃 Часто используется декомпозиция User Stories на задачи (Tasks), определяются Acceptance Criteria.</em></li>
+                        <li><input type="checkbox"> Создать прототипы интерфейсов (Figma, Balsamiq) для визуализации.</li>
+                        <li><input type="checkbox"> Построить диаграммы для визуализации процессов.</li>
+                        <li><input type="checkbox"> Устранить конфликты требований через согласование с заказчиком.</li>
+                        <li><input type="checkbox"> Верифицировать и валидировать требования.</li>
+                    </ul>
+                </div>
+                <div class="result-box">
+                    <strong>⛳ Результат:</strong>
+                    <div class="agile-content">Готовые к работе задачи в бэклоге спринта.</div>
+                    <div class="waterfall-content">Готовые к работе утвержденные спецификации требований.<br><br><em>📌 Потребуется явно организовать подписание документации, чтобы формально зафиксировать минимальность дальнейших изменений. Требования могут быть представлены в виде User Story, но объединены в общую спецификацию.</em></div>
+                </div>
             </div>
-            <div class="result-box">
-                <strong>⛳ Результат:</strong>
-                <div class="agile-content">Изменения неизбежны. Три провальных подхода: игнорирование, принятие без анализа и попытки "законсервировать". Эффективная альтернатива — четко определенный процесс для оценки изменений ("правила игры") и доверие стейкхолдеров.</div>
-                <div class="waterfall-content">Изменения фиксируются в виде спецификаций и встроены в общий бэклог. Даже после согласования базовой версии (baseline) могут возникнуть новые факторы. Каждое изменение рассматривается и приоритизируется.</div>
-            </div>
-        </div>
-    </details>
+        </details>
 
-    <!-- Шаг 5 -->
-    <details>
-        <summary>5. Передача требований в разработку</summary>
-        <div class="content">
-            <div class="goal"><strong>🎯 Цель:</strong> Обеспечить четкое понимание требований командой.</div>
-            <div class="actions">
-                <p><strong>✔️ Действия:</strong></p>
-                <ul>
-                    <li><input type="checkbox"> Провести встречу с разработчиками, тестировщиками и архитекторами.</li>
-                    <li class="agile-content" style="display: list-item; list-style-type: none; margin-left: 25px;"><em>🏃 В Agile - это Backlog Refinement, Sprint Planning.</em></li>
-                    <li><input type="checkbox"> Ответить на вопросы и уточнить спорные моменты.</li>
-                    <li><input type="checkbox"> Обеспечить доступ к документации.</li>
-                </ul>
+        <!-- Шаг 4 -->
+        <details>
+            <summary>4. Управление изменениями требований</summary>
+            <div class="content">
+                <div class="goal"><strong>🎯 Цель:</strong> Минимизировать риски несвоевременных изменений.</div>
+                <div class="actions">
+                    <p><strong>✔️ Действия:</strong></p>
+                    <ul>
+                        <li><input type="checkbox"> Настроить процесс запроса изменений (Change Request).</li>
+                        <li><input type="checkbox"> Оценивать влияние изменений на сроки, бюджет и архитектуру.</li>
+                        <li><input type="checkbox"> Обновлять документацию и уведомлять команду.</li>
+                    </ul>
+                </div>
+                <div class="result-box">
+                    <strong>⛳ Результат:</strong>
+                    <div class="agile-content">Изменения неизбежны. Три провальных подхода: игнорирование, принятие без анализа и попытки "законсервировать". Эффективная альтернатива — четко определенный процесс для оценки изменений ("правила игры") и доверие стейкхолдеров.</div>
+                    <div class="waterfall-content">Изменения фиксируются в виде спецификаций и встроены в общий бэклог. Даже после согласования базовой версии (baseline) могут возникнуть новые факторы. Каждое изменение рассматривается и приоритизируется.</div>
+                </div>
             </div>
-            <div class="result-box">
-                <strong>⛳ Результат:</strong>
-                <div class="agile-content">Команда приступает к реализации спринта.</div>
-                <div class="waterfall-content">Команда приступает к реализации этапа.</div>
-            </div>
-        </div>
-    </details>
+        </details>
 
-    <!-- Шаг 6 -->
-    <details>
-        <summary>6. Контроль качества и сопровождение</summary>
-        <div class="content">
-            <div class="goal"><strong>🎯 Цель:</strong> Следить за соответствием продукта исходным требованиям.</div>
-            <div class="actions">
-                <p><strong>✔️ Действия:</strong></p>
-                <ul>
-                    <li><input type="checkbox"> Ежедневные встречи для синхронизации команды.</li>
-                    <li><input type="checkbox"> Участвовать в тестировании для проверки критериев приемки (SRS).</li>
-                    <li><input type="checkbox"> Вносить корректировки требований по мере разработки.</li>
-                    <li><input type="checkbox"> Фиксировать отклонения и инициировать корректирующие действия.</li>
-                    <li><input type="checkbox"> Подготовить демо/Sprint Review для стейкхолдеров.</li>
-                    <li class="waterfall-content" style="display: list-item; list-style-type: none; margin-left: 25px;"><em>🌊 В Waterfall аналитик участвует в отдельной фазе Приемочного тестирования.</em></li>
-                </ul>
+        <!-- Шаг 5 -->
+        <details>
+            <summary>5. Передача требований в разработку</summary>
+            <div class="content">
+                <div class="goal"><strong>🎯 Цель:</strong> Обеспечить четкое понимание требований командой.</div>
+                <div class="actions">
+                    <p><strong>✔️ Действия:</strong></p>
+                    <ul>
+                        <li><input type="checkbox"> Провести встречу с разработчиками, тестировщиками и архитекторами.</li>
+                        <li class="agile-content" style="display: list-item; list-style-type: none; margin-left: 25px;"><em>🏃 В Agile - это Backlog Refinement, Sprint Planning.</em></li>
+                        <li><input type="checkbox"> Ответить на вопросы и уточнить спорные моменты.</li>
+                        <li><input type="checkbox"> Обеспечить доступ к документации.</li>
+                    </ul>
+                </div>
+                <div class="result-box">
+                    <strong>⛳ Результат:</strong>
+                    <div class="agile-content">Команда приступает к реализации спринта.</div>
+                    <div class="waterfall-content">Команда приступает к реализации этапа.</div>
+                </div>
             </div>
-            <div class="result-box">
-                <strong>⛳ Результат:</strong>
-                Продукт соответствует утвержденным требованиям.
-            </div>
-        </div>
-    </details>
+        </details>
 
-    <!-- Шаг 7 -->
-    <details>
-        <summary>7. Внедрение продукта</summary>
-        <div class="content">
-            <div class="goal"><strong>🎯 Цель:</strong> Завершить работу с требованиями и передать продукт заказчику.</div>
-            <div class="actions">
-                <p><strong>✔️ Действия:</strong></p>
-                <ul>
-                    <li><input type="checkbox"> Участвовать в разработке релизной стратегии и пилотирования.</li>
-                    <li><input type="checkbox"> Участвовать в подготовке отчетов и обучении пользователей.</li>
-                    <li><input type="checkbox"> Разработать структуру базы знаний, написать инструкции.</li>
-                    <li><input type="checkbox"> Участвовать в поддержке (3 линия) для разбора сложных инцидентов.</li>
-                </ul>
+        <!-- Шаг 6 -->
+        <details>
+            <summary>6. Контроль качества и сопровождение</summary>
+            <div class="content">
+                <div class="goal"><strong>🎯 Цель:</strong> Следить за соответствием продукта исходным требованиям.</div>
+                <div class="actions">
+                    <p><strong>✔️ Действия:</strong></p>
+                    <ul>
+                        <li><input type="checkbox"> Ежедневные встречи для синхронизации команды.</li>
+                        <li><input type="checkbox"> Участвовать в тестировании для проверки критериев приемки (SRS).</li>
+                        <li><input type="checkbox"> Вносить корректировки требований по мере разработки.</li>
+                        <li><input type="checkbox"> Фиксировать отклонения и инициировать корректирующие действия.</li>
+                        <li><input type="checkbox"> Подготовить демо/Sprint Review для стейкхолдеров.</li>
+                        <li class="waterfall-content" style="display: list-item; list-style-type: none; margin-left: 25px;"><em>🌊 В Waterfall аналитик участвует в отдельной фазе Приемочного тестирования.</em></li>
+                    </ul>
+                </div>
+                <div class="result-box">
+                    <strong>⛳ Результат:</strong>
+                    Продукт соответствует утвержденным требованиям.
+                </div>
             </div>
-            <div class="result-box">
-                <strong>⛳ Результат:</strong>
-                Успешная сдача рабочего продукта, готового к эксплуатации.
-            </div>
-        </div>
-    </details>
+        </details>
 
-    <!-- Блок Инструменты -->
-    <div class="tools">
-        <h2>💼 Инструментарий аналитика</h2>
-        <ul>
-            <li><strong>Управление проектами (Task-трекеры):</strong> Trello, Jira, Yandex Tracker, Kaiten, EvaProject.</li>
-            <li><strong>Базы знаний:</strong> Confluence, Notion, Yandex Wiki, EvaWiki, Obsidian.</li>
-            <li><strong>Визуализация и бизнес-процессы:</strong> PlantUML / Mermaid.js, Miro, Draw.io, Holst, Camunda, Business Studio.</li>
-            <li><strong>API и интеграции:</strong> Swagger, Postman, Bruno, Insomnia.</li>
-            <li><strong>Анализ логов и мониторинг:</strong> Kibana (ELK), Grafana, OpenSearch.</li>
-            <li><strong>Базы данных:</strong> ClickHouse, Redis, PostgreSQL, MySQL.</li>
-        </ul>
+        <!-- Шаг 7 -->
+        <details>
+            <summary>7. Внедрение продукта</summary>
+            <div class="content">
+                <div class="goal"><strong>🎯 Цель:</strong> Завершить работу с требованиями и передать продукт заказчику.</div>
+                <div class="actions">
+                    <p><strong>✔️ Действия:</strong></p>
+                    <ul>
+                        <li><input type="checkbox"> Участвовать в разработке релизной стратегии и пилотирования.</li>
+                        <li><input type="checkbox"> Участвовать в подготовке отчетов и обучении пользователей.</li>
+                        <li><input type="checkbox"> Разработать структуру базы знаний, написать инструкции.</li>
+                        <li><input type="checkbox"> Участвовать в поддержке (3 линия) для разбора сложных инцидентов.</li>
+                    </ul>
+                </div>
+                <div class="result-box">
+                    <strong>⛳ Результат:</strong>
+                    Успешная сдача рабочего продукта, готового к эксплуатации.
+                </div>
+            </div>
+        </details>
+
+        <!-- Блок Инструменты -->
+        <div class="tools">
+            <h2>💼 Инструментарий аналитика</h2>
+            <ul>
+                <li><strong>Управление проектами (Task-трекеры):</strong> Trello, Jira, Yandex Tracker, Kaiten, EvaProject.</li>
+                <li><strong>Базы знаний:</strong> Confluence, Notion, Yandex Wiki, EvaWiki, Obsidian.</li>
+                <li><strong>Визуализация и бизнес-процессы:</strong> PlantUML / Mermaid.js, Miro, Draw.io, Holst, Camunda, Business Studio.</li>
+                <li><strong>API и интеграции:</strong> Swagger, Postman, Bruno, Insomnia.</li>
+                <li><strong>Анализ логов и мониторинг:</strong> Kibana (ELK), Grafana, OpenSearch.</li>
+                <li><strong>Базы данных:</strong> ClickHouse, Redis, PostgreSQL, MySQL.</li>
+            </ul>
+        </div>
+
+        <button class="pdf-btn" onclick="window.print()">📥 Сохранить этот документ как PDF</button>
+
     </div>
 
-    <button class="pdf-btn" onclick="window.print()">📥 Сохранить этот документ как PDF</button>
+    <script>
+        // Скрипт для переключения Agile / Waterfall
+        function setMethod(method) {
+            const agileElements = document.querySelectorAll('.agile-content');
+            const waterfallElements = document.querySelectorAll('.waterfall-content');
+            const btnAgile = document.getElementById('btn-agile');
+            const btnWaterfall = document.getElementById('btn-waterfall');
 
-</div>
-
-<script>
-    // Скрипт для переключения Agile / Waterfall
-    function setMethod(method) {
-        const agileElements = document.querySelectorAll('.agile-content');
-        const waterfallElements = document.querySelectorAll('.waterfall-content');
-        const btnAgile = document.getElementById('btn-agile');
-        const btnWaterfall = document.getElementById('btn-waterfall');
-
-        if (method === 'agile') {
-            agileElements.forEach(el => el.style.display = 'block');
-            waterfallElements.forEach(el => el.style.display = 'none');
-            btnAgile.classList.add('active');
-            btnWaterfall.classList.remove('active');
-        } else {
-            agileElements.forEach(el => el.style.display = 'none');
-            waterfallElements.forEach(el => el.style.display = 'block');
-            btnWaterfall.classList.add('active');
-            btnAgile.classList.remove('active');
+            if (method === 'agile') {
+                agileElements.forEach(el => el.style.display = 'block');
+                waterfallElements.forEach(el => el.style.display = 'none');
+                btnAgile.classList.add('active');
+                btnWaterfall.classList.remove('active');
+            } else {
+                agileElements.forEach(el => el.style.display = 'none');
+                waterfallElements.forEach(el => el.style.display = 'block');
+                btnWaterfall.classList.add('active');
+                btnAgile.classList.remove('active');
+            }
         }
-    }
 
-    // По умолчанию включаем Agile
-    window.onload = () => {
-        setMethod('agile');
-        
-        // Магия для открытия всех вкладок перед печатью PDF (встроенная функция браузера)
-        window.onbeforeprint = function() {
-            document.querySelectorAll('details').forEach(detail => detail.setAttribute('open', 'true'));
+        // По умолчанию включаем Agile
+        window.onload = () => {
+            setMethod('agile');
+            
+            // Магия для открытия всех вкладок перед печатью PDF (встроенная функция браузера)
+            window.onbeforeprint = function() {
+                document.querySelectorAll('details').forEach(detail => detail.setAttribute('open', 'true'));
+            };
         };
-    };
-</script>
+    </script>
 
 </body>
 </html>
